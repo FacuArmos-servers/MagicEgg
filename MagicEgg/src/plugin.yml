@@ -1,0 +1,69 @@
+name: MagicEgg
+main: com.migsi.magicegg.MagicEgg
+version: 1.1.0
+author: Migsi
+authors: [TheMrJezza]
+description: Spawns dragon eggs random on definable locations, which give the players who click them loot.
+
+commands:
+  meggaddloc:
+    description: Adds a new location where a MagicEgg can spawn
+    aliases: [mgal]
+    usage: /mgal [x] [z] radius
+  meggremoveloc:
+    description: Removes a location where a MagicEgg can spawn
+    aliases: [mgrl]
+    usage: /mgrml [x] [z]
+  meggspawn:
+    description: Spawns a MagicEgg
+    aliases: [mgs]
+    usage: /mgs [x] [z] radius
+  meggstart:
+    description: Starts the event timer
+    aliases: [mgstart]
+    usage: /mgstart
+  meggstop:
+    description: Stops the event timer
+    aliases: [mgstop]
+    usage: /mgstop
+  meggforce:
+    description: Forces the event to start, but doesn't affect the timer
+    aliases: [mgforce]
+    usage: /mgforce
+
+permissions:
+  magicegg.*:
+    description: Allows to execute all MagicEgg commands
+    children:
+      magicegg.spawn: true
+      magicegg.location: true
+      magicegg.event: true
+  magicegg.spawn:
+    description: Allows to spawn a MagicEgg
+    default: false
+  magicegg.location:
+    description: Allows to add and remove locations where MagicEggs can spawn
+    children:
+     magicegg.location.add: true
+     magicegg.location.remove: true
+  magicegg.location.add:
+    description: Allows to add a location where a MagicEgg can spawn
+    default: false
+  magicegg.location.remove:
+    description: Allows to remove a location where a MagicEgg can spawn
+    default: false
+  magicegg.event:
+    description: Allows to start, stop and force the event
+    children:
+      magicegg.event.start: true
+      magicegg.event.stop: true
+      magicegg.event.force: true
+  magicegg.event.start:
+    description: Allows to start the event
+    default: false
+  magicegg.event.stop:
+    description: Allows to stop the event
+    default: false
+  magicegg.event.force:
+    description: Allows to force the event
+    default: false
