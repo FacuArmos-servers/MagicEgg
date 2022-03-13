@@ -1,6 +1,7 @@
 name: MagicEgg
 main: com.migsi.magicegg.MagicEgg
 version: 1.1.0
+api-version: 1.18
 author: Migsi
 authors: [TheMrJezza]
 description: Spawns dragon eggs random on definable locations, which give the players who click them loot.
