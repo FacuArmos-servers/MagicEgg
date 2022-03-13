@@ -170,7 +170,7 @@ public class MagicEgg extends JavaPlugin {
 						sender.sendMessage(ChatColor.DARK_PURPLE + "The event started now and will repeat itself every "
 								+ ChatColor.RESET + MagicConfig.ticksToMin(MagicConfig.getRepetitionDelay())
 								+ ChatColor.DARK_PURPLE + " minutes." + ChatColor.RESET);
-						broadcast(ChatColor.translateAlternateColorCodes('§', MagicConfig.getOnStartMessage()));
+						broadcast( MagicConfig.getOnStartMessage() );
 					} else {
 						sender.sendMessage(ChatColor.DARK_PURPLE + "The event is already running!" + ChatColor.RESET);
 					}
@@ -181,7 +181,7 @@ public class MagicEgg extends JavaPlugin {
 					try {
 						scheduler.cancel();
 						sender.sendMessage(ChatColor.DARK_PURPLE + "The event was stopped." + ChatColor.RESET);
-						broadcast(ChatColor.translateAlternateColorCodes('§', MagicConfig.getOnStopMessage()));
+						broadcast( MagicConfig.getOnStopMessage() );
 					} catch (IllegalStateException e) {
 						sender.sendMessage(ChatColor.DARK_RED + "The event was not started yet!" + ChatColor.RESET);
 					}
@@ -231,7 +231,13 @@ public class MagicEgg extends JavaPlugin {
 			as.setCustomName(MagicConfig.getName());
 			map.put(egg, as);
 
-			broadcast(ChatColor.translateAlternateColorCodes('§', MagicConfig.getOnSpawnMessage()));
+			broadcast(
+					String.format(
+						MagicConfig.getOnSpawnMessage(),
+						Double.valueOf(loc.getBlockX()).toString(),
+						Double.valueOf(loc.getBlockZ()).toString()
+					)
+			);
 		}
 	}
 
@@ -370,7 +376,9 @@ public class MagicEgg extends JavaPlugin {
 						loc.getWorld().dropItemNaturally(droparea.get(loc).getRandLocation(), item);
 					}
 				}
-				broadcast(ChatColor.translateAlternateColorCodes('§', MagicConfig.getOnDropMessage()));
+
+				broadcast( MagicConfig.getOnDropMessage() );
+
 				if (droparea.get(loc).isTemporary()) {
 					droparea.remove(loc);
 				}

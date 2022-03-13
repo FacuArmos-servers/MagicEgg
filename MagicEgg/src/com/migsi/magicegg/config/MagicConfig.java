@@ -40,7 +40,7 @@ public class MagicConfig {
 	// Custom broadcast messages
 	private static String OnStartMessage = "The " + MagicConfig.getName() + " event just started!";
 	private static String OnStopMessage = "The " + MagicConfig.getName() + " event was canceled now...";
-	private static String OnSpawnMessage = "A new " + MagicConfig.getName() + " just spawned!";
+	private static String OnSpawnMessage = "A new " + MagicConfig.getName() + " just spawned at %s %s!";
 	private static String OnDropMessage = "§5L§8o§5o§8t§5!§8!§5!§f";
 
 	// Holds all items which get dropped
