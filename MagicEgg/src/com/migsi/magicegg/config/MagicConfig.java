@@ -13,6 +13,7 @@ import com.migsi.magicegg.MagicDropArea;
 import com.migsi.magicegg.MagicEgg;
 import com.migsi.magicegg.MagicItemStack;
 import com.migsi.magicegg.enums.MagicConfigEnum;
+import com.migsi.magicegg.exceptions.InvalidMaterialException;
 import com.migsi.magicegg.exceptions.InvalidProbabilityException;
 
 public class MagicConfig {
@@ -128,6 +129,8 @@ public class MagicConfig {
 						Drops.add(new MagicItemStack(DropsFileConfig.getString(key).split(";")));
 					} catch (InvalidProbabilityException e) {
 						MagicEgg.instance.getLogger().log(Level.SEVERE, "Set invalid probability on key: " + key);
+					} catch (InvalidMaterialException e) {
+						MagicEgg.instance.getLogger().log(Level.SEVERE, "Set invalid material on key: " + key + ": " + e.getMessage());
 					}
 				}
 
